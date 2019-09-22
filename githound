@@ -1,0 +1,6 @@
+#If you want only the remote URL, or referential integrity has been broken: 
+git config --get remote.origin.url
+
+
+#If you require full output or referential integrity is intact:
+git remote show origin
