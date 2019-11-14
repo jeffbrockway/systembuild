@@ -3,15 +3,16 @@
 # Install MariaDB
 sudo apt install mariadb-server -y
 
-#sudo cat >/etc/my.cnf <<EOL
-#[mysqld]
-#max_allowed_packet=32M
-#EOL
+cat >/tmp/my.cnf <<EOL
+[mysqld]
+max_allowed_packet=32M
+EOL
+sudo mv /tmp/my.cnf /etc/my.cnf
 
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
 sudo systemctl status mariadb
-#sudo mysql_secure_installation
+sudo mysql_secure_installation
 
 
 # Install Java
@@ -24,17 +25,17 @@ sudo useradd -m -U -d /opt/tomcat -s /sbin/nologin tomcat
 
 # setup apache tomcat
 cd /tmp
-#wget http://mirrors.sonic.net/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz
+wget http://mirrors.sonic.net/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz
 # TODO verify PGP
 # TODO: search for currect version, set variables
-#tar -xf apache-tomcat-9.0.27.tar.gz
-#sudo mv apache-tomcat-9.0.27 /opt/tomcat
+tar -xf apache-tomcat-9.0.27.tar.gz
+sudo mv apache-tomcat-9.0.27 /opt/tomcat
 #sudo ln -s /opt/tomcat/apache-tomcat-9.0.27 /opt/tomcat/latest
 sudo chown -R tomcat: /opt/tomcat
 sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 
 # create systemctl tomcat service
-sudo cat >/etc/systemd/system/tomcat.service <<EOL
+cat >/tmp/tomcat.service <<EOL
 [Unit]
 Description=Tomcat 9 servlet container
 After=network.target
@@ -59,6 +60,7 @@ ExecStop=/opt/tomcat/latest/bin/shutdown.sh
 [Install]
 WantedBy=multi-user.target
 EOL
+sudo mv /tmp/tomcat.service /etc/systemd/system/tomcat.service
 
 #sudo vi /etc/systemd/system/tomcat.service
 sudo systemctl daemon-reload
