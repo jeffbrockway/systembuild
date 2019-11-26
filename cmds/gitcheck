@@ -1,0 +1,21 @@
+#!/bin/bash
+# JCB 2018-10-12
+
+gitdir=~/git
+repos='XXXX-Common XXX-Survival-Kit Integrations XXXX'
+
+for repo in $repos
+do
+  echo "========================================="
+  echo " $repo"
+  echo "========================================="
+  echo
+
+  cd $gitdir/$repo
+
+  git status
+
+  echo
+  echo
+  echo
+done
