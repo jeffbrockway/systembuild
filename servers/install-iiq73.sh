@@ -30,7 +30,7 @@ wget http://mirrors.sonic.net/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9
 # TODO: search for currect version, set variables
 tar -xf apache-tomcat-9.0.27.tar.gz
 sudo mv apache-tomcat-9.0.27 /opt/tomcat
-#sudo ln -s /opt/tomcat/apache-tomcat-9.0.27 /opt/tomcat/latest
+sudo ln -s /opt/tomcat/apache-tomcat-9.0.27 /opt/tomcat/latest
 sudo chown -R tomcat: /opt/tomcat
 sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 
