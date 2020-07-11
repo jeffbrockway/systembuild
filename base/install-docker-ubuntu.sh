@@ -13,7 +13,11 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # TODO
 
 # Add the Docker repository to APT sources
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+# Ubuntu 18.0
+#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+# Ubuntu 20.04 
+# TODO: Check Ubuntu version ansd switch repos
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 
 # Update the package database with the Docker packages from the newly added repo
 sudo apt update
