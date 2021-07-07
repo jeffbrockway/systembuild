@@ -1,1 +1,9 @@
+# set hostname
+#update all
+# sudo reboot
 sudo apt-get install unzip
+
+#git clone or pull systembuild
+
+
+
